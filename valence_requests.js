@@ -30,9 +30,6 @@ async function makeGetRequest(url) {
             }
         } catch (err) {
             console.log(err)
-            const errRes = err.config.response
-            const response = {'status':errRes.status, 'text':errRes.data}
-            return response
         }
     }
 
@@ -60,9 +57,6 @@ async function makePostRequest(url, data) {
             }
         } catch (err) {
             console.log(err)
-            const errRes = err.config.response
-            const response = {'status':errRes.status, 'text':errRes.data}
-            return response
         }
     }
 
@@ -88,9 +82,6 @@ async function makeDeleteRequest(url) {
             }
         } catch (err) {
             console.log(err)
-            const errRes = err.config.response
-            const response = {'status':errRes.status, 'text':errRes.data}
-            return response
         }
     }
 
@@ -118,9 +109,6 @@ async function makePutRequest(url, data) {
             }
         } catch (err) {
             console.log(err)
-            const errRes = err.config.response
-            const response = {'status':errRes.status, 'text':errRes.data}
-            return response
         }
     }
 
