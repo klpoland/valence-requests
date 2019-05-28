@@ -77,9 +77,9 @@ const versionsList = await get_api_versions(
 6. Now let's try something a bit more complex, a POST request. Let's try to make a function that posts on a discussion forum. Make sure you have the proper permissions to do this:
 ```javascript
 async function postToTopic(userKey, userId, host, version, ou, forumId, topicId, appContext) {
-    const req = '/d2l/api/le/' + version + '/' + ou + '/discussions/forums/' + forumId + '/topics/' + topicId + '/posts/';
-    const method = 'POST';
-    const url = getUserContext(userId, userKey, req, host, method, appContext);
+    const req = '/d2l/api/le/' + version + '/' + ou + '/discussions/forums/' + forumId + '/topics/' + topicId + '/posts/'
+    const method = 'POST'
+    const url = getUserContext(userId, userKey, req, host, method, appContext)
     const data = {
         "ParentPostId": null,
         "Subject": "Hello World",
@@ -89,8 +89,8 @@ async function postToTopic(userKey, userId, host, version, ou, forumId, topicId,
         },
         "IsAnonymous": false
     }
-    const res = await makePostRequest(url, data);
-    return res;
+    const res = await makePostRequest(url, data)
+    return res
 }
 ```
 When you call this function and run your program, you should see a new post under the org unit, forum, and topic you inputted.
