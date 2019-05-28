@@ -2,7 +2,7 @@
 Node.js request functions intended for use with the Valence (Brightspace) API
 
 ## Dependencies
-- axios
+- axios (provided in download folder)
 - valence SDK for Node.js if applicable
 
 ## Function Descriptions
