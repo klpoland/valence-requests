@@ -1,5 +1,6 @@
 # valence-requests
-Node.js request functions intended for use with the Valence (Brightspace) API
+Node.js request functions intended for use with the Valence (Brightspace) API.
+Compatible with AWS Lambda, examples of this below.
 
 ## Dependencies
 - axios (provided in download folder)
