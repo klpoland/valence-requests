@@ -26,9 +26,9 @@ Node.js request functions intended for use with the Valence (Brightspace) API
 
 ## Examples of Use
 1. Download valence_requests package to your working directory with git clone, then import into your code like so:
-  ```javascript
-  const valReq = require('./valence_requests.js')
-  ```
+ ```javascript
+ const valReq = require('./valence_requests.js')
+ ```
 2. For valence, you'll also need to import the valence module:
 ```javascript
 const D2L = require('./valence.js')
@@ -56,8 +56,8 @@ async function get_api_versions(userKey, userId, host, appContext) {
   const result = {}
   const req = 'd2l/api/versions/'
   const method = 'GET'
-  const url = getUserContext(userId, userKey, req, host, method, appContext)
-  const res = await makeGetRequest(url)
+  const url = valReq.getUserContext(userId, userKey, req, host, method, appContext)
+  const res = await valReq.makeGetRequest(url)
   for (var i = 0; i < res.length; i++) {
     var api = res[i]
     var name = api.ProductCode
@@ -79,7 +79,7 @@ const versionsList = await get_api_versions(
 async function postToTopic(userKey, userId, host, version, ou, forumId, topicId, appContext) {
     const req = '/d2l/api/le/' + version + '/' + ou + '/discussions/forums/' + forumId + '/topics/' + topicId + '/posts/'
     const method = 'POST'
-    const url = getUserContext(userId, userKey, req, host, method, appContext)
+    const url = valReq.getUserContext(userId, userKey, req, host, method, appContext)
     const data = {
         "ParentPostId": null,
         "Subject": "Hello World",
@@ -89,7 +89,7 @@ async function postToTopic(userKey, userId, host, version, ou, forumId, topicId,
         },
         "IsAnonymous": false
     }
-    const res = await makePostRequest(url, data)
+    const res = await valReq.makePostRequest(url, data)
     return res
 }
 ```
