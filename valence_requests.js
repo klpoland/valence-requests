@@ -7,12 +7,16 @@ function can be used in tandem to make any request to valence
 which is detailed in the README.md
 */
 
+// EXPORT MODULE
+
+var exports = module.exports = {}
+
 //------------ IMPORTING DEPENDENCIES -------------
 
 const axios = require('axios')
 
 //------------- GET REQUEST FUNCTION --------------
-async function makeGetRequest(url) {
+exports.makeGetRequest = async function(url) {
     const request = async () => {
         try {
             return await axios.get(url)
@@ -37,7 +41,7 @@ async function makeGetRequest(url) {
 }
 
 //--------------- POST REQUEST FUNCTION -----------------
-async function makePostRequest(url, data) {
+exports.makePostRequest = async function(url, data) {
     const options = JSON.stringify(data)
     axios.defaults.headers.post['Content-Type'] = 'application/json'
     const request = async () => {
@@ -64,7 +68,7 @@ async function makePostRequest(url, data) {
 }
 
 //--------------- DELETE REQUEST FUNCTION -----------------
-async function makeDeleteRequest(url) {
+exports.makeDeleteRequest = async function(url) {
     const request = async () => {
         try {
             return await axios.delete(url)
@@ -89,7 +93,7 @@ async function makeDeleteRequest(url) {
 }
 
 //--------------- PUT REQUEST FUNCTION -----------------
-async function makePutRequest(url, data) {
+exports.makePutRequest = async function(url, data) {
     const options = JSON.stringify(data)
     axios.defaults.headers.post['Content-Type'] = 'application/json'
     const request = async () => {
@@ -116,15 +120,11 @@ async function makePutRequest(url, data) {
 }
 
 //----------------- FUNCTION TO VALIDATE USER CONTEXT -------------------
-function getUserContext(userId, userKey, req, host, method, appContext) {
+exports.getUserContext = function(userId, userKey, req, method, appContext) {
     const scheme = 'https://';
     const port = '443';
+    const host = 'ugatest2.view.usg.edu'
     const userContext = appContext.createUserContextWithValues(host, port, userId, userKey);
     const url = userContext.createUrlForAuthentication(req, method);
     return scheme + url
-  }
-
-
-// EXPORT MODULE
-
-  module.exports = { valence_requests }
+}
