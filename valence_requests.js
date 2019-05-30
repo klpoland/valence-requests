@@ -120,10 +120,9 @@ exports.makePutRequest = async function(url, data) {
 }
 
 //----------------- FUNCTION TO VALIDATE USER CONTEXT -------------------
-exports.getUserContext = function(userId, userKey, req, method, appContext) {
+exports.getUserContext = function(userId, userKey, req, host, method, appContext) {
     const scheme = 'https://';
     const port = '443';
-    const host = 'ugatest2.view.usg.edu'
     const userContext = appContext.createUserContextWithValues(host, port, userId, userKey);
     const url = userContext.createUrlForAuthentication(req, method);
     return scheme + url
